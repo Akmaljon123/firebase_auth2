@@ -39,8 +39,10 @@ class HttpService{
     request.add(utf8.encode(jsonEncode(user)));
     HttpClientResponse response = await request.close();
 
-    if(response.statusCode >= 205){
-      Utils.fireSnackBar("Something went wrong", context);
+    if(context.mounted){
+      if(response.statusCode >= 205){
+        Utils.fireSnackBar("Something went wrong", context);
+      }
     }
   }
 }
